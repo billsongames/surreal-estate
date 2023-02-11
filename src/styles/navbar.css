@@ -1,0 +1,19 @@
+.navbar {
+  background-color: antiquewhite;
+  border-bottom-color: black;
+}
+
+.navbar-links {
+ list-style-type: none;
+ padding: 0 0 0 0
+}
+
+.surreal-estates-logo {
+  scale: 50%
+}
+
+.navbar-links-item {
+  display: inline-block;
+  margin: 0;
+  padding: 6px;
+}
