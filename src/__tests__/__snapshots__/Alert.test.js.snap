@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert tests Error props renders error alert mesage 1`] = `
+<DocumentFragment>
+  <div
+    class="property-added-false"
+  >
+    Error adding property
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Alert tests Success props renders success alert mesage 1`] = `
+<DocumentFragment>
+  <div
+    class="property-added-false"
+  >
+    Property added successfully
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Alert tests no props does not render an alert mesage 1`] = `<DocumentFragment />`;

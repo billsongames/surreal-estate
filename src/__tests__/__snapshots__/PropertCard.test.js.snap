@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property card expect test props to be correct 1`] = `
+<DocumentFragment>
+  <div
+    class="property-card"
+  >
+    <div>
+      Title: 3 bed detached
+    </div>
+    <div>
+      Type: Detached
+    </div>
+    <div>
+      Bathrooms: 1
+    </div>
+    <div>
+      Bedrooms: 0
+    </div>
+    <div>
+      Price: 200000
+    </div>
+    <div>
+      City: Manchester
+    </div>
+    <div>
+      <a
+        href="mailto:bigbob@email.com"
+      >
+        Email
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,9 @@
+.property-added-true {
+  background-color: green;
+  color: black;
+}
+
+.property-added-false {
+  background-color: red;
+  color: black;
+}  

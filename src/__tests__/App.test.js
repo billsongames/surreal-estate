@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from '../components/App';
 
-test('renders learn react link', () => {
+test('App renders correctly', () => {
   const {content} =  render(<App />);
 
   expect(content).toMatchSnapshot()
