@@ -1,4 +1,9 @@
 .properties-container {
   display: grid;
-  grid-template-columns: 20% 20% 20% 10% 20%;
+  grid-template-columns: 20% 80%;
+}
+
+.property-cards {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
 }

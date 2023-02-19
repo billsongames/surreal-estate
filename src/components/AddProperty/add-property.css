@@ -1,3 +1,9 @@
 .add-property {
-  padding: 5%
+  padding: 10px%
+}
+
+.alert-message {
+  margin: auto;
+  width: 300px;
+  padding: 4px;
 }

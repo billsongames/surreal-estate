@@ -1,53 +1,66 @@
 import { React, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom"
+
 import axios from "axios";
 
 import PropertyCard from "../PropertyCard/PropertyCard";
 import Alert from "../Alert/Alert"
+import SideBar from "../SideBar/SideBar";
 
 import "./properties.css"
 
 function Properties() {
-  const validProps = {
-    fields: {
-      title: "3 bed detached",
-      city: "Manchester",
-      type: "Detached",
-      bedrooms: 0,
-      bathrooms: 1,
-      price: 200000,
-      email: "bigbob@email.com",
-    },  
-    alert: {
-      message: "",
-      isSuccess: false
-    }
-  }
-
   const [properties,setProperties] = useState([])
   const [alert,setAlert] = useState({message: ""})
 
-  const postAddress="http://localhost:4000/api/v1/PropertyListing/"
+  const apiUrl="http://localhost:4000/api/v1/PropertyListing"
+
+  // SHOW ALL PROPERTIES
 
   useEffect(() => {
     axios
-      .get(postAddress)
+      .get(apiUrl)
 
       .then(function (response) {
-        console.log(response)
         setProperties(response.data)
       })  
         
       .catch(function(error) {
         setAlert({message: "Error loading properties"})
-        console.log(error)
       })
 
   }, []);
 
+  const { search } = useLocation()
+
+  // CUSTOM SEARCH
+
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}${search}`)
+
+      .then(function (response) {
+        setProperties(response.data)
+        console.log(response.data)
+      })
+
+      .catch(function(error) {
+        console.error(error)
+      }) 
+
+  }, [search])
+
   return(
-    <div>
+    <>
       <h2>Properties</h2>
+      <div className="properties-results">
+        {properties.length} properties found
+      </div>
       <div className="properties-container">
+        <div>
+          <SideBar/>
+        </div>
+        <div className="property-cards">
         {properties.map((property) => (
           <div key={property._id}>
             <PropertyCard
@@ -58,15 +71,15 @@ function Properties() {
               price={property.price}
               city={property.city}
               email={property.email}
-            />
-          </div>
-    
+            />  
+          </div>    
         ))}
+        </div>  
       </div>
       <div>
         <Alert message={alert.message}/>
       </div> 
-    </div>
+    </>
   )
 }
 

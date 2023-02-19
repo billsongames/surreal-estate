@@ -1,9 +1,17 @@
 .property-added-true {
+  padding: 4px;
+  margin: 4px;
+  font-size: 20px;
+  font-weight: bold;
   background-color: green;
   color: black;
 }
 
 .property-added-false {
+  padding: 4px;
+  margin: 4px;
+  font-size: 20px;
+  font-weight: bold;
   background-color: red;
   color: black;
 }  

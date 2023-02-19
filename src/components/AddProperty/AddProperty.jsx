@@ -3,6 +3,8 @@ import axios from "axios";
 
 import Alert from "../Alert/Alert";
 
+import { cities, types } from "../../data/data"
+
 import "./add-property.css"
 
 
@@ -13,9 +15,9 @@ function AddProperty() {
       city: "Manchester",
       type: "Detached",
       bedrooms: 0,
-      bathrooms: 1,
-      price: 200000,
-      email: "bigbob@email.com",
+      bathrooms: 0,
+      price: 0,
+      email: "",
     },  
     alert: {
       message: "",
@@ -57,62 +59,95 @@ function AddProperty() {
 
   return(
     <div>
-      <Alert message={alert.message} success={alert.isSuccess}/>
-
-    <div className="add-property">
-        Add Property Page
+      <div className="add-property">
+        <h2>Add property</h2>
         <form onSubmit={handleAddProperty}>
           <div>
             <label htmlFor="title">Title</label>
-            <input id="title" name="title" value={fields.title} onChange={handleFieldChange}></input>
+            <input
+              required
+              id="title"
+              name="title"
+              placeholder="Property description"
+
+              onChange={handleFieldChange}>
+            </input>
           </div>
 
           <div>
             <label htmlFor="city">City</label>
-            <select id="city" name="city" value={fields.city} onChange={handleFieldChange}>
-              <option value="Manchester">Manchester</option>
-              <option value="Leeds">Leeds</option>
-              <option value="Sheffield">Sheffield</option>
-              <option value="Liverpool">Liverpool</option>
+            <select
+              required
+              id="city"
+              name="city"
+              value={fields.city}
+              onChange={handleFieldChange}>
+              {cities.map((location) => (
+                <option value={location}>{location}</option>
+              ))}
             </select>
           </div>
 
           <div>
             <label htmlFor="type">Type</label>
             <select id="type" name="type" value={fields.type} placeholder="Property type" onChange={handleFieldChange}>
-              <option value="Detached">Detached</option>
-              <option value="Semi-Detached">Semi-Detached</option>
-              <option value="Terraced">Terraced</option>
-              <option value="End of Terrace">End of Terrace</option>
-              <option value="Cottage">Cottage</option>
-              <option value="Bungalow">Bungalow</option>
+            {types.map((type) => (
+                <option value={type}>{type}</option>
+              ))}
             </select>
           </div>
 
           <div>
             <label htmlFor="Bedrooms">Bedrooms</label>
-            <input id="bedrooms" name="bedrooms" value={fields.bedrooms} placeholder="Number of bedrooms" onChange={handleFieldChange}></input>
+            <input
+              required
+              id="bedrooms"
+              name="bedrooms"
+              placeholder="Number of bedrooms"
+              onChange={handleFieldChange}>
+            </input>
           </div>
 
           <div>
             <label htmlFor="Bathrooms">Bathrooms</label>
-            <input id="bathrooms" name="bathrooms" value={fields.bathrooms} placeholder="Number of bathrooms" onChange={handleFieldChange}></input>
+            <input
+              required
+              id="bathrooms"
+              name="bathrooms"
+              placeholder="Number of bathrooms"
+              onChange={handleFieldChange}>
+            </input>
           </div>
 
           <div>
             <label htmlFor="Price">Price</label>
-            <input id="price" name="price" value={fields.price} placeholder="Price" onChange={handleFieldChange}></input>
+            <input
+              required
+              id="price"
+              name="price"
+              placeholder="Price"
+              onChange={handleFieldChange}>
+            </input>
           </div>
 
           <div>
             <label htmlFor="email">email</label>
-            <input id="email" name="email" value={fields.email} onChange={handleFieldChange}></input>
+            <input
+              required
+              id="email"
+              name="email"
+              placeholder="someone@email.com"
+              onChange={handleFieldChange}>
+            </input>
           </div>
 
           <div>
             <button type="submit">Add</button>
           </div>
         </form>
+      </div>
+      <div className="alert-message">
+        <Alert message={alert.message} success={alert.isSuccess}/>
       </div>
     </div>  
   )
