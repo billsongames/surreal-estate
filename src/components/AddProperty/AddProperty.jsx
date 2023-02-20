@@ -62,7 +62,7 @@ function AddProperty() {
       <div className="add-property">
         <h2>Add property</h2>
         <form onSubmit={handleAddProperty}>
-          <div>
+          <div className="input-field">
             <label htmlFor="title">Title</label>
             <input
               required
@@ -74,7 +74,7 @@ function AddProperty() {
             </input>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="city">City</label>
             <select
               required
@@ -88,7 +88,7 @@ function AddProperty() {
             </select>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="type">Type</label>
             <select id="type" name="type" value={fields.type} placeholder="Property type" onChange={handleFieldChange}>
             {types.map((type) => (
@@ -97,40 +97,46 @@ function AddProperty() {
             </select>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="Bedrooms">Bedrooms</label>
             <input
               required
               id="bedrooms"
               name="bedrooms"
+              type="number"
+              min={0}
               placeholder="Number of bedrooms"
               onChange={handleFieldChange}>
             </input>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="Bathrooms">Bathrooms</label>
             <input
               required
               id="bathrooms"
               name="bathrooms"
+              type="number"
+              min={0}
               placeholder="Number of bathrooms"
               onChange={handleFieldChange}>
             </input>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="Price">Price</label>
             <input
               required
               id="price"
               name="price"
+              type="number"
+              min={0}
               placeholder="Price"
               onChange={handleFieldChange}>
             </input>
           </div>
 
-          <div>
+          <div className="input-field">
             <label htmlFor="email">email</label>
             <input
               required
@@ -141,7 +147,7 @@ function AddProperty() {
             </input>
           </div>
 
-          <div>
+          <div className="input-field">
             <button type="submit">Add</button>
           </div>
         </form>

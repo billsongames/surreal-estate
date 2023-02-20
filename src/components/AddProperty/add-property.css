@@ -2,6 +2,22 @@
   padding: 10px%
 }
 
+.input-field {
+  width: 500px;
+  margin: auto
+}
+
+.input-field > input, select{
+  height: 30px;
+  font-size: 20px;
+  width: 200px
+}
+
+.input-field > label {
+  color: red;
+  font-size: 20px;
+}
+
 .alert-message {
   margin: auto;
   width: 300px;

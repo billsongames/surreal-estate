@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 
 import "./property-card.css"
 
@@ -30,6 +31,15 @@ function PropertyCard(props) {
       </div>
     </div>  
   )
+}
+
+PropertyCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  bathrooms: PropTypes.string.isRequired,
+  bedrooms: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
 }
 
 export default PropertyCard
