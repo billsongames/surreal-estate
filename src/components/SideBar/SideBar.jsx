@@ -8,13 +8,21 @@ import "./sidebar.css"
 
 function SideBar(properties) {
   const [searchText, setSearchText] = useState("")
-  const navigate = useNavigate()
   const { search } = useLocation()
+  const navigate = useNavigate()
+  
 
 
   const BuildQueryString = (operation, valueObj) => {    
-    const currentQueryParams = QueryString.parse(search, {ignoreQueryPrefix:true})
-    const newQuery={...currentQueryParams, [operation]: JSON.stringify(valueObj)}
+    const currentQuery = QueryString.parse(search, {ignoreQueryPrefix:true})
+    const newQuery = {
+      ...currentQuery,
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQuery[operation] || "{}" ),
+        ...valueObj,
+        })
+    }    
+
     return QueryString.stringify(newQuery, {addQueryPrefix: true, encode: false})
   } 
 
@@ -28,12 +36,17 @@ function SideBar(properties) {
 
   const handleFieldChange = (event) => {
     setSearchText(event.target.value)
-  }  
+  }
+
+  const handleReset = () => {
+    setSearchText("")
+
+  }
   
   return(
     <div className="sidebar">
       <div className="sidebar-link">
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} onReset={handleReset}>
           <label htmlFor="search">Search properties</label>
             <input
               id="search"
@@ -44,6 +57,7 @@ function SideBar(properties) {
             </input>
             <div>
               <button type="submit">Search</button>
+              <button type="reset">Reset</button>
             </div>
           </form>
         </div>
