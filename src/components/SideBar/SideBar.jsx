@@ -40,7 +40,6 @@ function SideBar(properties) {
 
   const handleReset = () => {
     setSearchText("")
-
   }
   
   return(
