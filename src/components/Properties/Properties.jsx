@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import PropTypes from "prop-types"
 import { useLocation } from "react-router-dom"
 
 import axios from "axios";
@@ -9,7 +10,7 @@ import SideBar from "../SideBar/SideBar";
 
 import "./properties.css"
 
-function Properties() {
+function Properties({userID}) {
   const [properties,setProperties] = useState([])
   const [alert,setAlert] = useState({message: ""})
 
@@ -21,7 +22,7 @@ function Properties() {
     axios
       .get(apiUrl)
 
-      .then(function (response) {
+      .then(function(response) {
         setProperties(response.data)
       })  
         
@@ -31,9 +32,9 @@ function Properties() {
 
   }, []);
 
-  const { search } = useLocation()
+ // CUSTOM SEARCH
 
-  // CUSTOM SEARCH
+  const { search } = useLocation()
 
   useEffect(() => {
     axios
@@ -50,6 +51,16 @@ function Properties() {
 
   }, [search])
 
+  const handleSaveProperty = (propertyID) => {
+    axios
+      .post("http://localhost:4000/api/v1/Favourite", {
+        propertyListing: propertyID,
+        fbUserId: userID })
+      .catch(function(error) {
+        console.log(error)
+      })  
+  }
+
   return(
     <>
       <h2>Properties</h2>
@@ -64,6 +75,7 @@ function Properties() {
         {properties.map((property) => (
           <div key={property._id}>
             <PropertyCard
+              _id={property._id}
               title={property.title}
               type={property.type}
               bathrooms={property.bathrooms}
@@ -71,6 +83,8 @@ function Properties() {
               price={property.price}
               city={property.city}
               email={property.email}
+              userID={userID}
+              onSaveProperty={handleSaveProperty}
             />  
           </div>    
         ))}
@@ -81,6 +95,10 @@ function Properties() {
       </div> 
     </>
   )
+}
+
+Properties.propTypes = {
+  userID: PropTypes.string.isRequired
 }
 
 export default Properties

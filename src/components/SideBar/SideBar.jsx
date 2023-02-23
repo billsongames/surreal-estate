@@ -6,12 +6,10 @@ import {homeUrl, cities} from "../../data/data";
 
 import "./sidebar.css"
 
-function SideBar(properties) {
+function SideBar() {
   const [searchText, setSearchText] = useState("")
   const { search } = useLocation()
   const navigate = useNavigate()
-  
-
 
   const BuildQueryString = (operation, valueObj) => {    
     const currentQuery = QueryString.parse(search, {ignoreQueryPrefix:true})
