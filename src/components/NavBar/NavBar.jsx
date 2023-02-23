@@ -7,8 +7,16 @@ import "./nav-bar.css"
 function NavBar( {onLogin, userID, onLogout} ) {
   return(
     <div className="navbar">
-      <img className="surreal-estates-logo" src="/logo.png" alt="logo"></img>
+      <Link to={"/"}>
+        <img className="surreal-estates-logo" src="/logo.png" alt="logo"></img>
+      </Link>  
       <ul className="navbar-links">
+        <li className="navbar-links-item">
+          {userID
+          ? <Link to={"./SavedProperties"}>Saved Properties</Link>
+          : <></>
+          }
+        </li>
         <li className="navbar-links-item">
           <Link to={"/"}>View Properties</Link>
         </li>

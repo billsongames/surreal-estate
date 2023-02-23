@@ -83,7 +83,7 @@ function AddProperty() {
               value={fields.city}
               onChange={handleFieldChange}>
               {cities.map((location) => (
-                <option value={location}>{location}</option>
+                <option value={location} key={location}>{location}</option>
               ))}
             </select>
           </div>
@@ -92,7 +92,7 @@ function AddProperty() {
             <label htmlFor="type">Type</label>
             <select id="type" name="type" value={fields.type} placeholder="Property type" onChange={handleFieldChange}>
             {types.map((type) => (
-                <option value={type}>{type}</option>
+                <option value={type} key={type}>{type}</option>
               ))}
             </select>
           </div>
@@ -148,6 +148,7 @@ function AddProperty() {
           </div>
 
           <div className="input-field">
+            <label htmlFor="submit-button"></label>
             <button type="submit">Add</button>
           </div>
         </form>

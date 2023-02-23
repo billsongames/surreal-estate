@@ -1,4 +1,4 @@
-export const homeUrl = "http://localhost:3000/"
+export const homeUrl = "https://localhost:3000/"
 
 export const propertyListingUrl="http://localhost:4000/api/v1/PropertyListing"
 

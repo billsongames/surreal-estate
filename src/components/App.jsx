@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 
 import NavBar from './NavBar/NavBar';
+import SavedProperties from './SavedProperties/SavedProperties';
 import Properties from './Properties/Properties';
 import AddProperty from './AddProperty/AddProperty';
 
@@ -26,6 +27,7 @@ function App() {
       <div className="App">
         <NavBar onLogin = {handleLogin} userID = {userID} onLogout = {handleLogout}/>
         <Routes>
+          <Route path="SavedProperties" element={<SavedProperties userID={userID} />} />
           <Route path = "/" element={<Properties userID={userID} />} />
           <Route path="AddProperty" element={<AddProperty/>} />
         </Routes>

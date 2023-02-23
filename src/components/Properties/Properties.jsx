@@ -42,11 +42,11 @@ function Properties({userID}) {
 
       .then(function (response) {
         setProperties(response.data)
-        console.log(response.data)
+//        console.log(response.data)
       })
 
       .catch(function(error) {
-        console.error(error)
+//        console.error(error)
       }) 
 
   }, [search])
